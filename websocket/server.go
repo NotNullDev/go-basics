@@ -93,6 +93,7 @@ func main() {
 			log.Println(err.Error())
 			return
 		}
+
 		defer wsConnection.Close()
 
 		for {
@@ -107,7 +108,6 @@ func main() {
 
 			log.Printf("Received new message with type: [%v] and content: [%v]", msgType, string(msgContent))
 		}
-
 	})
 
 	err = http.ListenAndServe(*addr, nil)
