@@ -1,4 +1,4 @@
-module notnulldev.com/redis
+module github.com/notnulldev.com/go-example/redis
 
 go 1.19
 
