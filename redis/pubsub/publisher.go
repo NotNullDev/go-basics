@@ -23,7 +23,7 @@ func StartPublisher(channelName string, sleepTimeInMs int64) {
 		err := redisClient.Send("publish", channelName, msg)
 
 		if err != nil {
-			log.Printf("ERROR: %v", err.Error())
+			log.Printf("ERROR: %s", err.Error())
 		}
 
 		redisClient.Flush()

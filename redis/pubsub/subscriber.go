@@ -37,7 +37,7 @@ func StartSubscriber(channelName string) {
 		case redis.Error:
 			log.Printf("ERROR: %s", event.Error())
 		default:
-			log.Panic("Something went wrong!")
+			log.Printf("Something went wrong! %v", event)
 		}
 	}
 

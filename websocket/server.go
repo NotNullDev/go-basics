@@ -71,13 +71,13 @@ func main() {
 
 	go server.Run()
 
-	url := url.URL{
+	u := url.URL{
 		Scheme: "ws",
 		Host:   *addr,
 		Path:   *endpoint,
 	}
 
-	log.Println("URL STRING: ", url.String())
+	log.Println("URL STRING: ", u.String())
 
 	upgrader := websocket.Upgrader{
 		CheckOrigin: func(r *http.Request) bool {
@@ -94,7 +94,12 @@ func main() {
 			return
 		}
 
-		defer wsConnection.Close()
+		defer func(wsConnection *websocket.Conn) {
+			err := wsConnection.Close()
+			if err != nil {
+
+			}
+		}(wsConnection)
 
 		for {
 			msgType, msgContent, err := wsConnection.ReadMessage()
